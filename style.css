@@ -1,0 +1,332 @@
+/* ============================================================
+   style.css — Chronicles of Code: Zara Darkbane
+   ============================================================ */
+
+/* --- Variables de color --- */
+:root {
+  --color-bg-dark:    #0f0f1a;
+  --color-bg-mid:     #16213e;
+  --color-bg-light:   #1a1a2e;
+  --color-accent:     #e94560;
+  --color-text:       #e8e8f0;       /* alto contraste sobre fondos oscuros */
+  --color-text-muted: #b0b0c8;       /* contraste >= 4.5:1 sobre fondos oscuros */
+  --color-white:      #ffffff;
+}
+
+/* --- Reset básico --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================================
+   LAYOUT MACRO con CSS Grid
+   Áreas: header | main | footer
+   ============================================================ */
+body {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+
+  font-family: Georgia, serif;
+  background: var(--color-bg-dark);
+  color: var(--color-text);
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+  grid-area: header;
+  background: #1a1a2e;
+  padding: 16px 40px;
+  border-bottom: 3px solid var(--color-accent);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.logo {
+  color: var(--color-accent);
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* Navegación con Flexbox */
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-text);   /* contraste correcto sobre fondo oscuro */
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  color: var(--color-accent);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+main {
+  grid-area: main;
+}
+
+/* ============================================================
+   HERO — sección del personaje
+   ============================================================ */
+.hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 60px 40px;
+  background: #16213e;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--color-accent);
+  flex-shrink: 0;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--color-accent);
+  margin-bottom: 8px;
+}
+
+.class-badge {
+  display: inline-block;
+  background: var(--color-accent);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  color: var(--color-white);   /* texto blanco sobre rojo: contraste > 4.5:1 */
+}
+
+.hero-bio {
+  margin-top: 16px;
+  max-width: 600px;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.hero-meta {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+}
+
+.hero-meta dt {
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+.hero-meta dd {
+  color: var(--color-text);
+}
+
+/* ============================================================
+   STATS
+   ============================================================ */
+.stats-section {
+  padding: 60px 40px;
+  background: #0f3460;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  color: var(--color-white);   /* blanco sobre fondo oscuro: contraste OK */
+  margin-bottom: 24px;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 8px;
+}
+
+/* Grid de stats — reemplaza los floats */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: #16213e;
+  border: 1px solid var(--color-accent);
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-icon {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--color-accent);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text-muted);  /* contraste correcto */
+}
+
+/* ============================================================
+   HABILIDADES
+   ============================================================ */
+.skills-section {
+  padding: 60px 40px;
+  background: #1a1a2e;
+}
+
+.skill-card {
+  border: 1px solid var(--color-accent);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  background: #16213e;
+}
+
+.skill-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--color-accent);
+  margin-bottom: 6px;
+}
+
+.skill-desc {
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.skill-cost {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);  /* contraste correcto */
+  margin-top: 6px;
+}
+
+/* Tags con Flexbox */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+  list-style: none;
+}
+
+.tag {
+  background: var(--color-accent);
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  color: var(--color-white);
+}
+
+/* ============================================================
+   FORMULARIO DE DESAFÍO
+   ============================================================ */
+.challenge-section {
+  padding: 60px 40px;
+  background: #0f3460;
+}
+
+.challenge-intro {
+  margin-bottom: 24px;
+  max-width: 600px;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+input,
+select {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid var(--color-accent);
+  background: #16213e;
+  color: var(--color-text);
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 28px;
+  background: var(--color-accent);
+  color: var(--color-white);
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1rem;
+  border: none;
+  font-family: Georgia, serif;
+  transition: opacity 0.2s;
+}
+
+.btn:hover,
+.btn:focus {
+  opacity: 0.85;
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  grid-area: footer;
+  background: #1a1a2e;
+  color: var(--color-text);
+  text-align: center;
+  padding: 20px;
+  border-top: 3px solid var(--color-accent);
+  line-height: 1.8;
+}
