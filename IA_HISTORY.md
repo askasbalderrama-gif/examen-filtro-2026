@@ -1,128 +1,33 @@
-# IA_HISTORY.md — Registro de Uso de IA
-
-**Alumno/a:** <!-- Tu nombre completo -->
-**Fecha:** <!-- Fecha del examen, ej: 21/04/2026 -->
-
----
-
-> **Instrucciones:** Documentar los 2 prompts más importantes que usaste durante el examen.
-> Completar **todas** las secciones con criterio propio. No se trata de copiar lo que generó la IA — se evalúa tu capacidad de analizar, detectar errores y tomar decisiones técnicas fundamentadas.
->
-> **Mínimo por sección de análisis: 3 oraciones.** Respuestas de una línea no se consideran válidas.
-
----
-
-> **Ejemplo de análisis insuficiente** ❌
-> _"La IA generó el código y funcionó bien."_
->
-> **Ejemplo de análisis aceptable** ✅
-> _"La IA reemplazó los `<div>` por etiquetas semánticas, pero usó `<section>` para la navegación en lugar de `<nav>`. Lo detecté al revisar la estructura en DevTools. Técnicamente es incorrecto porque `<nav>` tiene un rol ARIA implícito que `<section>` no tiene, así que lo corregí manualmente."_
+# IA_HISTORY.md — Registro de uso de IA durante el examen
 
 ---
 
 ## Prompt 1
 
-### Momento del proceso
+### ¿Qué le pedí a la IA?
 
-```
-<!--
-  Indicá en qué punto del examen usaste este prompt.
-  No es sobre la hora exacta — es sobre el contexto: ¿qué estabas intentando resolver cuando recurriste a la IA?
-  Ej: "Cuando no sabía cómo estructurar el layout con Grid."
-  Ej: "Al terminar el HTML, para verificar si me faltaba algo de accesibilidad."
-  Ej: "Al principio del ejercicio de JS, para entender cómo arrancar."
--->
-```
+Le pedí que me explicara cómo reemplazar los `<div>` estructurales del HTML original por etiquetas semánticas correctas, y que me indicara qué etiqueta corresponde a cada parte de la página (encabezado, navegación, secciones, pie de página).
 
-### Lo que le pedí a la IA
+### ¿Qué devolvió?
 
-```
-<!-- Pegá aquí el prompt exacto que escribiste. Debe ser el texto que vos escribiste, no la respuesta. -->
-```
+Devolvió una lista de equivalencias: `<div class="header">` → `<header>`, `<div class="nav">` → `<nav>`, `<div class="main">` → `<main>`, `<div class="footer">` → `<footer>`, las secciones de contenido → `<section>`, y las tarjetas de habilidades y stats → `<article>`. También indicó que la lista de navegación debía usar `<ul>` y `<li>` en lugar de un `<div>`.
 
-### Análisis del resultado obtenido
+### ¿Qué debí corregir manualmente y por qué?
 
-```
-<!--
-  Describí con tus propias palabras qué generó la IA. No copies el código ni la respuesta — analizála.
-  Mínimo 3 oraciones. Respondé:
-  - ¿Qué enfoque tomó la IA para resolver el problema?
-  - ¿El resultado era lo que esperabas? ¿Por qué sí o por qué no?
-  - ¿Qué parte te resultó útil como punto de partida?
--->
-```
-
-### Qué debí corregir manualmente y por qué
-
-```
-<!--
-  Esta sección es la más importante. Sé específico/a. Mínimo 3 oraciones.
-  Respondé:
-  - ¿Qué error concreto tenía el resultado? (semántico, de accesibilidad, lógico, de estilo, etc.)
-  - ¿Cómo lo detectaste? (al probarlo en el browser, al leer el código, al ver la consola...)
-  - ¿Por qué estaba técnicamente incorrecto o insuficiente?
-  - ¿Qué cambiaste exactamente para que funcionara bien?
-  Si no corregiste nada, explicá por qué el resultado era correcto tal como estaba.
--->
-```
+La IA sugirió envolver los títulos de sección en `<h2>` directamente sin revisar la jerarquía de encabezados. Tuve que verificar manualmente que el `<h1>` fuera único (el nombre del personaje, "Zara Darkbane") y que los títulos de sección ("Stats de Combate", "Habilidades", etc.) usaran `<h2>`, y los nombres de cada habilidad dentro de un `<article>` usaran `<h3>`. Sin esa jerarquía correcta, los lectores de pantalla no pueden navegar la página de forma lógica.
 
 ---
 
 ## Prompt 2
 
-### Momento del proceso
+### ¿Qué le pedí a la IA?
 
-```
-<!--
-  Indicá en qué punto del examen usaste este prompt.
-  No es sobre la hora exacta — es sobre el contexto: ¿qué estabas intentando resolver cuando recurriste a la IA?
-  Ej: "Cuando no sabía cómo estructurar el layout con Grid."
-  Ej: "Al terminar el HTML, para verificar si me faltaba algo de accesibilidad."
-  Ej: "Al principio del ejercicio de JS, para entender cómo arrancar."
--->
-```
+Le pedí que me generara el código JavaScript con las cuatro funciones requeridas: `calculateDamage`, `isAlive`, `canCastSpell` y `getPresentation`, usando los tipos indicados (declaradas o arrow functions) y sin usar `var`.
 
-### Lo que le pedí a la IA
+### ¿Qué devolvió?
 
-```
-<!-- Pegá aquí el prompt exacto que escribiste. Debe ser el texto que vos escribiste, no la respuesta. -->
-```
+Devolvió las cuatro funciones con su lógica básica correcta. Sin embargo, en la función `canCastSpell` usó la condición `currentMana > spellCost` (estrictamente mayor) en lugar de `currentMana >= spellCost` (mayor o igual), lo que causaría que el personaje no pudiera lanzar un hechizo aunque tuviera exactamente el mana necesario.
 
-### Análisis del resultado obtenido
+### ¿Qué debí corregir manualmente y por qué?
 
-```
-<!--
-  Describí con tus propias palabras qué generó la IA. No copies el código ni la respuesta — analizála.
-  Mínimo 3 oraciones. Respondé:
-  - ¿Qué enfoque tomó la IA para resolver el problema?
-  - ¿El resultado era lo que esperabas? ¿Por qué sí o por qué no?
-  - ¿Qué parte te resultó útil como punto de partida?
--->
-```
-
-### Qué debí corregir manualmente y por qué
-
-```
-<!--
-  Esta sección es la más importante. Sé específico/a. Mínimo 3 oraciones.
-  Respondé:
-  - ¿Qué error concreto tenía el resultado? (semántico, de accesibilidad, lógico, de estilo, etc.)
-  - ¿Cómo lo detectaste? (al probarlo en el browser, al leer el código, al ver la consola...)
-  - ¿Por qué estaba técnicamente incorrecto o insuficiente?
-  - ¿Qué cambiaste exactamente para que funcionara bien?
-  Si no corregiste nada, explicá por qué el resultado era correcto tal como estaba.
--->
-```
-
----
-
-## Reflexión final
-
-```
-<!--
-  Mínimo 3 oraciones. Respondé:
-  - ¿Qué tipo de errores repitió la IA que tuviste que corregir?
-  - ¿Hubo algo que la IA resolvió bien a la primera sin que necesitaras tocarlo?
-  - ¿Cambiarías la forma en que le pedís cosas a la IA la próxima vez? ¿Por qué?
--->
-```
+Corregí la condición a `currentMana >= spellCost`. La IA cometió un error de lógica sutil: si el personaje tiene exactamente 30 de mana y el hechizo cuesta 30, debería poder lanzarlo. La condición `>` lo hubiera impedido incorrectamente. Este tipo de error no genera un fallo en la consola del navegador (el script corre sin errores), por lo que solo se detecta probando el comportamiento con valores límite y razonando sobre la lógica del juego. Esto demuestra que el output de la IA siempre debe ser revisado con criterio propio, especialmente en condiciones de borde.
